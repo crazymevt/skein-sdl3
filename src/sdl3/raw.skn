@@ -2042,7 +2042,8 @@
   [renderer (ptr sdl-renderer), x f32, y f32, window-x (ptr f32), window-y (ptr f32)])
 (ffi/defcfun render-debug-text "SDL_RenderDebugText" bool
   [renderer (ptr sdl-renderer), x f32, y f32, str c-string])
-;; skipped SDL_RenderDebugTextFormat: variadic
+(ffi/defcfun render-debug-text-format "SDL_RenderDebugTextFormat" bool
+  [renderer (ptr sdl-renderer), x f32, y f32, fmt c-string &])
 (ffi/defcfun render-fill-rect "SDL_RenderFillRect" bool
   [renderer (ptr sdl-renderer), rect (ptr sdl-frect)])
 (ffi/defcfun render-fill-rects "SDL_RenderFillRects" bool
@@ -2112,7 +2113,7 @@
 (ffi/defcfun set-cursor "SDL_SetCursor" bool [cursor (ptr sdl-cursor)])
 (ffi/defcfun set-default-texture-scale-mode "SDL_SetDefaultTextureScaleMode" bool
   [renderer (ptr sdl-renderer), scale-mode sdl-scale-mode])
-;; skipped SDL_SetError: variadic
+(ffi/defcfun set-error "SDL_SetError" bool [fmt c-string &])
 (ffi/defcfun set-error-v "SDL_SetErrorV" bool [fmt c-string, ap (ptr i8)])
 (ffi/defcfun set-event-enabled "SDL_SetEventEnabled" void [type u32, enabled bool])
 (ffi/defcfun set-event-filter "SDL_SetEventFilter" void [filter ptr, userdata ptr])

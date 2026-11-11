@@ -12,7 +12,7 @@ Add it to your project's `project.skn`:
 ```clojure
 {:name "game"
  :main game.main/-main
- :deps {skein/sdl3 {:git "https://github.com/crazymevt/skein-sdl3" :tag "v0.1.0"}}}
+ :deps {skein/sdl3 {:git "https://github.com/crazymevt/skein-sdl3" :tag "v0.2.0"}}}
 ```
 
 and require it:
@@ -33,6 +33,14 @@ package.
  :native {:libs {:macos ["vendor/macos/libSDL3.dylib"]
                  :linux ["vendor/linux/libSDL3.so.0"]
                  :windows ["vendor/windows/SDL3.dll"]}}
+```
+
+Variadic functions (`SDL_SetError`, `SDL_RenderDebugTextFormat`) are bound with their
+fixed parameters only, so `(sdl/set-error "message")` works. To pass more arguments,
+declare a shape of your own, as `skein.ffi` describes:
+
+```clojure
+(ffi/defcfun set-error-int "SDL_SetError" bool [fmt c-string & n i32])
 ```
 
 ## Regenerating the bindings
