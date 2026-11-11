@@ -1,0 +1,5 @@
+;; SDL3 bindings for Skein, as a library: a project depends on it with
+;;   :deps {skein/sdl3 {:git "https://github.com/crazymevt/skein-sdl3" :tag "v0.1.0"}}
+{:name "skein-sdl3"
+ :version "0.1.0"
+ :paths ["src"]}
